@@ -1,0 +1,54 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-image: url('./demo.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover;   
+}
+.demo{
+    width: 400px;
+    margin-left: calc(50% - 200px);
+    margin-top: 50px;   
+    box-shadow: -10px 10px 20px blue;
+    background-color: rgba(77,77 ,77, 0.4);
+    border-radius: 10px;
+    padding: 2%;
+}
+.demo>form>div>label{
+    display: block;
+    margin:5px 0px 5px 10px; 
+    font: 16px Arial;
+    font-weight: bold;
+}
+.demo>form>div>input{
+    width: 95% !important;
+    border-radius: 5px;
+    border: 1px solid silver;
+    height: 30px;
+    margin:5px 0px 5px 10px;  
+    font: 16px Arial;
+    font-weight: bold;
+}
+.demo>form>div>input:focus{
+    border-radius: 5px !important;
+}
+.demo>form>div>input[type='text'],.demo>form>div>input[type='email']{
+    text-transform: uppercase;
+}
+.demo>form>div>input[type='submit']{
+    background-color: powderblue;
+    margin-top:5%;
+}
+.demo>form>div>input[type='submit']:hover{
+    background-color: blueviolet;
+}
+.demo>form>h2{
+    text-align: center;
+}
+.profile{
+    width: 20%;
+    height: 20%;
+    margin-left: calc(50% - 10%);
+    border: 3px double silver;
+    border-radius: 50%;
+}

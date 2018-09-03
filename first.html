@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>First</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./first.js"></script>
+    <script>
+        window.onload = function () {
+            var width = window.screen.width;
+            var height = window.screen.height;
+            var div1 = document.getElementsByClassName('calc')[0];
+            //console.log((height / 2) , (div1.clientHeight / 2));
+
+            div1.style.setProperty("top", (height / 2) - (div1.clientHeight / 1) + "px");
+            // div1.style.marginTop = (height / 2) - (div1.clientHeight / 2);       
+
+            var el = document.getElementsByTagName("button");
+            for (var i in el) {
+                if (el[i].innerHTML === '*' || 
+                    el[i].innerHTML === '+' || 
+                    el[i].innerHTML === '-' || 
+                    el[i].innerHTML === '*' || 
+                    el[i].innerHTML === '/' || 
+                    el[i].innerHTML === '%' ) { } else {
+                    el[i].addEventListener("click", function () {
+                        if (document.getElementById('1st').value == '' && this.innerHTML !=='c') {
+                            document.getElementById('1st').value = this.innerHTML;
+                        } else if (document.getElementById('2nd').value == ''&& this.innerHTML !=='c') {
+                            document.getElementById('2nd').value = this.innerHTML;
+                        } else if(this.innerHTML==='c'){
+                            document.getElementById('1st').value = '';
+                            document.getElementById('2nd').value = '';
+                            document.getElementById('ans').value = '';
+                        }
+                    });
+                }
+            }
+        }
+
+        function cal(op) {
+            with (document) {
+                getElementById("ans").value = eval((getElementById("1st").value * 1) + op + (getElementById("2nd").value * 1));
+            }
+        }
+
+
+
+    </script>
+    <style>
+        .calc {
+            background-color: aqua;
+        }
+
+        .btn {
+            width: 99%;
+        }
+
+        .calc>div {
+            padding: 1%;
+        }
+
+        .calc>div>div>div {
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="col-md-4 col-md-offset-4 calc">
+            <div class="row">
+                <div class="col-md-12">
+                    <input class="form-control" readonly id="ans">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input class="form-control" id="1st">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" id="2nd">
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">1</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">2</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">3</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-danger" onclick="cal('*')">*</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">4</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">5</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">6</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-danger" onclick="cal('/')">/</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">7</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">8</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">9</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-danger" onclick="cal('%')">%</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-danger" onclick="cal('+')">+</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary">0</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-danger" onclick="cal('-')">-</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-danger">c</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
