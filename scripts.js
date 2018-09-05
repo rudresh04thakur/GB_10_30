@@ -11,8 +11,11 @@ window.onload = function () {
                         (code < 97 || code > 122) &&
                         (code != 32 || code != 13 || code != 8 || code != 9)) {
                         event.preventDefault();
-                        //return false;
+                        document.getElementById("error").innerHTML = "Invalid Charater";
                         //this.value = (this.value)
+                    }
+                    else{
+                        document.getElementById("error").innerHTML = "";
                     }
                 });
             }
@@ -25,8 +28,11 @@ window.onload = function () {
                     if ((code < 48 || code > 57) &&
                         (code != 32 || code != 13 || code != 8 || code != 9)) {
                         event.preventDefault();
+                        document.getElementById("error").innerHTML = "Invalid Number";
                         //return false;
                         //this.value = (this.value)
+                    }else{
+                        document.getElementById("error").innerHTML = "";
                     }
                 });
             }
@@ -47,14 +53,12 @@ window.onload = function () {
                 }
                 console.log(posAt,posDot,posDottt);
                 if(posAt < 3 || posDottt < 6 || (email.length <= posDottt+2)){
-                    alert("Invalid Email");
+                    document.getElementById("error").innerHTML = "Invalid Email";
+                }else{
+                    document.getElementById("error").innerHTML = "";
                 }
-                
             });
         }
-    
-
-
     }
 }
 // function valid(){

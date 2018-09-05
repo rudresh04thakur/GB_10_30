@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Regular Expression in JavaScript</title>
+    <script>
+        window.onload = function(){
+            with(document){
+                getElementById("check").onclick = function  (){
+                    var v = getElementById("mb").value;
+                    //min woring max not working
+                    //var r = new RegExp('^(?=.*[a-z]{2,})(?=.*[A-Z]{2,})(?=.*[0-9]{2,})(?=.{8,14})') // regExp(pattern,attriutes) /i g m
+                    var r = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,10}$');
+                    //getElementById('match').innerHTML = v.match(r); //Return Element of First Match
+                    //getElementById('match').innerHTML = v.search(r); //Return Index of first Match
+                    getElementById('match').innerHTML = r.test(v);
+                }
+            }
+        }
+
+        
+
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" name="mobile" id="mb">
+        <button type="button" id="check">Check</button>
+        <div id="checker"></div>
+    </form>
+    <div id="match">
+
+    </div>
+</body>
+</html>    
