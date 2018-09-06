@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Map Helper</title>
+    <script>
+        window.onload = function(){
+            var a = [{
+                "name":"Gopal",
+                "age":20,
+                "color":"black"
+            },
+            {
+                "name":"Ganesh",
+                "age":27,
+                "color":"Fair"
+            },
+            {
+                "name":"Mangesh",
+                "age":23,
+                "color":"Fair"
+            },
+            {
+                "name":"Tejas",
+                "age":27,
+                "color":"Fair"
+            },
+            {
+                "name":"Sanjay",
+                "age":24,
+                "color":"Fair"
+            }];
+            // a.forEach((e)=>{
+            //     var p = document.createElement('p');
+            //     p.innerHTML = e*2;
+            //     document.body.appendChild(p);
+            // });
+
+            // a.map((e)=>{
+            //     var p = document.createElement('p');
+            //     p.innerHTML = e*2;
+            //     document.body.appendChild(p);
+            // });
+                
+            b = a.find(function(e){
+                return e.age < 27 && e.age > 20
+            });
+            console.log(b);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

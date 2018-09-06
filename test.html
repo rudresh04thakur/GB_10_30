@@ -7,20 +7,26 @@
     <title>Document</title>
     <style>
         #time{
-            
-            left:100px;
+            position: absolute;
         }
     </style>
     <script>
         window.onload = function(){
-            setInterval(function(){
+            var j = 0;
+            var tout = setInterval(function(){
                 var date = new Date();
                 var inner = date.getHours();
                 inner += ":" + date.getMinutes();
                 inner += date.getSeconds().toString().length<2 ?  ": 0" + date.getSeconds(): ":" + date.getSeconds();
                 document.getElementById("time").innerHTML = inner;
-                var j = document.getElementById("time").clientLeft;
-                document.getElementById("time").style.marginLeft = j+100;    
+                //var j = document.getElementById("time").style.marginLeft;
+                j +=100;
+                //alert(j);
+                document.getElementById("time").style.left = j +"px"; 
+               //alert(window.screen.width - document.getElementById("time").clientWidth);
+                if(j>=(window.screen.width - document.getElementById("time").clientWidth * 2)){
+                    clearInterval(tout);
+                }   
             },1000);
 
             setTimeout(function(){

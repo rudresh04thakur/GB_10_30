@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter Helper</title>
+    <script>
+        window.onload = function () {
+            var comments = [
+                { "uid": "01", "comment": "Comment_1 by uid = 1 " },
+                { "uid": "02", "comment": "Comment_1 by uid = 2 " },
+                { "uid": "01", "comment": "Comment_2 by uid = 1 " },
+                { "uid": "03", "comment": "Comment_1 by uid = 3 " },
+                { "uid": "02", "comment": "Comment_2 by uid = 2 " },
+                { "uid": "01", "comment": "Comment_3 by uid = 1 " }
+            ]
+
+            function filterComment(user_id, comments) {
+                
+                var filteredComments = comments.filter((comment) => {
+                    return comment.uid === user_id;
+                });
+
+                filteredComments.map((fcomment)=>{
+                    var p = document.createElement('p');
+                    p.innerHTML = fcomment.comment;
+                    document.getElementById('comment').appendChild(p);
+                });
+
+            }
+            var user_id = prompt("Enter User Id");
+            filterComment(user_id, comments);
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="comment"></div>
+</body>
+
+</html>
