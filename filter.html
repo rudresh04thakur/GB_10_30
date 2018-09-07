@@ -18,7 +18,7 @@
             ]
 
             function filterComment(user_id, comments) {
-                
+
                 var filteredComments = comments.filter((comment) => {
                     return comment.uid === user_id;
                 });
@@ -34,11 +34,42 @@
             filterComment(user_id, comments);
             
         }
+
+        //Bubbling 
+        function g_child(){
+           // event.stopPropagation(); //stop all parent events
+            event.preventDefault(); 
+            alert("Button Click");
+        }
+        function p_child(){
+            alert("Td Click");
+        }
+        function g_p_child(){
+            alert("Tr Click");
+        }
+
+        function save(){
+            event.preventDefault();
+
+        }
     </script>
 </head>
 
 <body>
     <div id="comment"></div>
+    <table>
+        <tr onclick="g_p_child()">
+            <td>Gopal</td>
+            <td>8983939246</td>
+            <td onclick="p_child()"><input type="button" onclick="g_child()" value="click"></td>
+        </tr>
+    </table>
+
+    <form action="#" method="POST">
+        <input>
+        <button type="submit" onclick="save()">Save</button>
+    </form>
+
 </body>
 
 </html>

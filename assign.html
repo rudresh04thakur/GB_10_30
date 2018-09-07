@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script>
+        function ajax(t){
+            if(XMLHttpRequest){
+                var http = new XMLHttpRequest();
+            }
+            var user = t.value;
+            http.open("get","https://api.github.com/search/users?q="+user);
+            http.send();
+            http.onreadystatechange = function(){
+                if(http.status == 200 && http.readyState == 4){
+                    var innerHTML = '';
+                    JSON.parse(http.responseText)['items'].map((e)=>{
+                        innerHTML += `
+                        <div class="col-md-8 col-md-offset-2 bg-danger" style="padding: 2%; border-radius: 20px">
+                            <div class="col-md-2">
+                                <img class="img-circle" style="border:1px solid silver " src="${e.avatar_url}" width="100">
+                            </div>
+                            <div class="col-md-8">
+                                ${e.login}
+                            </div>
+                            <div class="col-md-2">
+                                <button>Details</button>
+                            </div>
+                        </div>
+                        `;
+                    })
+                    document.getElementById("users").innerHTML = innerHTML;
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="container-fluid">
+            <div class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Project name</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-right">
+                            <input type="text" class="form-control" onblur="ajax(this)" placeholder="Search...">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="users">
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
