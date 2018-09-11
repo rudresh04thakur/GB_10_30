@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="./jquery-3.3.1.js"></script>
+         
+    </head> 
+    <body>
+        <script>
+            $(document).ready(function(){
+                // $('#gb').mouseover(function(){
+                //     $('#gb').css({"color":"red","font-size":"34px"});
+                // });  
+                // $('#gb').mouseout(function(){
+                //     $('#gb').css({"color":"black","font-size":"16px"});
+                // });  
+                var counter = 0;
+                $("#add").click(function(){
+                    $('body').append("<p>Hi this is dynamic added "+(counter++)+"<button id='rem'>Remove</button></p>");
+                });
+                $(document).on("click","#rem",function(){
+                    $(this).parent().remove();
+                });
+            });
+        </script>  
+        <span id="gb">
+            hi
+        </span>  
+        <button id="add">Add</button>
+    </body>
+</html>

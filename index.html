@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        // function ajax() {
+        //     if (XMLHttpRequest) {
+        //         var http = new XMLHttpRequest();
+        //         http.open("get", "https://api.github.com/search/users?q=rudresh");
+        //         http.send();
+        //         http.onreadystatechange = function () {
+        //             if (http.readyState == 4 && http.status == '200') {
+        //                 document.write(http.responseText);
+        //             }
+        //         }
+        //     } else {
+        //         document.write("AJAX is Not supported");
+        //     }
+        // }
+        // $(document).ready(function () {
+        //     var k =  setInterval(function () {
+        //         $.ajax({
+        //             url: 'https://api.github.com/search/users?q=rudresh',
+        //             type: 'get',
+        //             data: {},
+        //             success: function (res) {
+        //                 $("#txt").html(JSON.stringify(res));
+        //             },
+        //             error: function (err) {
+        //                 document.write(err);
+        //             }
+        //         });
+        //     },5000);
+        //     setTimeout(function(){
+        //         clearInterval(k);
+        //     },10000);
+            
+        // });
+    </script>
+<style>
+    #GB{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    #COM{
+        width: 550px;
+        height: 550px;
+        background-color: yellow;
+    }
+    #COM::after{
+        content: "";
+        border: 1px black solid;
+        min-width:550px;
+    }
+
+    .G>span:nth-child(4){
+        color: red;
+    }
+</style>
+
+
+</head>
+
+
+<body>
+    <div id="GB" dropzone=""></div>
+    <div class="G">
+        <span>A</span>
+        <span>B</span>
+        <span>C</span>
+        <span>D</span>
+        <span>E</span>
+
+    </div>
+</body>
+
+</html>
