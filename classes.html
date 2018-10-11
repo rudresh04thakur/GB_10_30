@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+    <script>
+        window.onload = function () {
+            function personal() {
+            }
+            personal.prototype.name = null;
+            personal.prototype.age = 0;
+            personal.prototype.getInfo = () => {
+                personal.prototype.name = prompt("Enter Your Name");
+                personal.prototype.age = parseInt(prompt("Enter Your Age"));
+                localStorage.setItem("name", personal.prototype.name);
+                localStorage.setItem("age", personal.prototype.age);
+            }
+
+            function official() {
+            }
+
+            official.prototype = Object.create(personal.prototype);
+
+            official.prototype.post = null;
+            official.prototype.sal = 10;
+
+            official.prototype.getOInfo = () => {
+                official.prototype.post = prompt("Enter Your Post");
+                official.prototype.sal = parseInt(prompt("Enter Your Salary"));
+                localStorage.setItem("post", official.prototype.post);
+                localStorage.setItem("sal", official.prototype.sal);
+            }
+
+
+            function bank() {
+            }
+
+            bank.prototype = Object.create(official.prototype);
+
+            bank.prototype.account = 0;
+            bank.prototype.ifsc = null;
+            bank.prototype.bankName = null;
+
+            bank.prototype.getBInfo = function () {
+                bank.prototype.account = parseInt(prompt("Enter Account Number"));
+                bank.prototype.ifsc = prompt("Enter Ifsc Code");
+                bank.prototype.bankName = prompt("Enter Bank Name");
+                localStorage.setItem('account',bank.prototype.account);
+                localStorage.setItem('ifsc',bank.prototype.ifsc);
+                localStorage.setItem('bankName',bank.prototype.bankName);
+            }
+
+            bank.prototype.putInfo = () => {
+                return [
+                    localStorage.getItem("name"),
+                    localStorage.getItem("age"),
+                    localStorage.getItem("post"),
+                    localStorage.getItem("sal"),
+                    localStorage.getItem('account'),
+                    localStorage.getItem('ifsc'),
+                    localStorage.getItem('bankName')
+                    ]
+            }
+
+            var o = new bank();
+            // o.getInfo();
+            // o.getOInfo();
+            // o.getBInfo();
+            document.getElementById("gb").innerHTML = `<p>Hi this is <br>${o.putInfo()}`;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="gb"></div>
+</body>
+
+</html>

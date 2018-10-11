@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax New</title>
+    <script>
+        function ajax(){
+            //var json = require("path");
+            if(XMLHttpRequest){
+                var http = new XMLHttpRequest();
+            }else if(ActiveXObject("Microsoft.XMLHTTP")){
+                var http = new ActiveXObject("Microsoft.XMLHTTP");
+            }else{
+                document.writeln("Your Browser Not supported to JavaScript");
+            }
+            http.open("get","https://www.google.com?id=1");
+            http.send();
+            http.onreadystatechange = function(){
+                if(http.readyState == 4 && http.status == 200){
+                    document.getElementById("page").innerHTML = http.responseText   ;
+                }
+            }
+        } 
+    </script>
+</head>
+<body>
+    <button onclick="ajax()">Click</button>
+    <p id="page"></p>
+</body>
+</html>
