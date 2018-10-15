@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax In Javscript</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script>
+        window.onload = function () {
+            document.getElementById("search").onclick = function () {
+                document.getElementById("main").innerHTML = "";
+                var s = document.getElementById("search_text").value;
+                if (XMLHttpRequest) {
+                    var http = new XMLHttpRequest();
+                } else if (ActiveXObject("Microsoft.XMLHTTP")) {
+                    var http = new ActiveXObject("Microsoft.XMLHTTP");
+                } else {
+                    document.write("Your Browser Have Not AJAX Object");
+                }
+                http.open("get", "https://api.github.com/search/users?q=" + s);
+                http.send();
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4 && http.status == 200) {
+                        var items = JSON.parse(http.responseText)['items'];
+                        document.getElementById("main").innerHTML = "";
+                        items.forEach(element => {
+                            var div = document.createElement("div");
+                            div.setAttribute("class", "row bg-primary");
+                            div.style.marginBottom = "20px";
+                            div.style.padding = "20px";
+                            div.style.borderRadius = "5px";
+                            var img = document.createElement("img");
+                            img.setAttribute("src", element['avatar_url']);
+                            img.setAttribute("class", "img-circle");
+                            img.style.display = "inline";
+                            img.style.width = "100px";
+                            var p = document.createElement('p')
+                            p.style.display = "inline";
+                            p.style.marginLeft = "10px";
+                            p.innerHTML = element['login'];
+                            div.appendChild(img);
+                            div.appendChild(p);
+                            document.getElementById("main").appendChild(div);
+                        });
+                    }
+
+                }
+            }
+
+        }
+    /*
+        0 - Not Init
+        1 - Init
+        2 - Open
+        3 - On Process
+        4 - Complete
+    */
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" id="search_text" class="form-control" placeholder="Search">
+                </div>
+                <button type="button" id="search" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="wrap">
+        <div class="container" id="main">
+
+        </div>
+    </div>
+</body>
+
+</html>
